@@ -1,0 +1,39 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="bg-white p-8 rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold mb-6 text-indigo-700">About This Application</h1>
+  
+  <p class="mb-4">This is a modular web application built with modern technologies:</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="border border-gray-200 rounded-lg p-4">
+      <h2 class="text-xl font-semibold mb-2 text-indigo-600">Backend</h2>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>TypeScript for type safety</li>
+        <li>Fastify for high-performance server</li>
+        <li>Modular architecture for scalability</li>
+        <li>Session-based authentication</li>
+        <li>Bun as the JavaScript runtime</li>
+      </ul>
+    </div>
+    
+    <div class="border border-gray-200 rounded-lg p-4">
+      <h2 class="text-xl font-semibold mb-2 text-indigo-600">Frontend</h2>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Nunjucks for templating</li>
+        <li>Tailwind CSS for styling</li>
+        <li>Responsive design</li>
+        <li>CSRF protection</li>
+        <li>Flash messages for user feedback</li>
+      </ul>
+    </div>
+  </div>
+  
+  <p class="mb-6">This application demonstrates a modular approach to web development, making it easy to add new features and modules as needed.</p>
+  
+  <a href="/" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+    Back to Home
+  </a>
+</div>
+{% endblock %}

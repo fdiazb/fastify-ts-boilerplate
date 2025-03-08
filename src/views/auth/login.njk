@@ -1,0 +1,45 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+  <h1 class="text-2xl font-bold mb-6 text-center text-indigo-700">Login</h1>
+  
+  <form action="/auth/login" method="POST" class="space-y-4">
+    <input type="hidden" name="_csrf" value="{{ csrf }}">
+    
+    {% if errorMessage %}
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+      <span class="block sm:inline">{{ errorMessage }}</span>
+    </div>
+    {% endif %}
+    
+    <div>
+      <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+      <input type="text" id="username" name="username" required
+        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+    </div>
+    
+    <div>
+      <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+      <input type="password" id="password" name="password" required
+        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+    </div>
+    
+    <div>
+      <button type="submit" 
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Login
+      </button>
+    </div>
+  </form>
+  
+  <div class="mt-6 text-center">
+    <p class="text-sm text-gray-600">
+      Don't have an account? 
+      <a href="/auth/register" class="text-indigo-600 hover:text-indigo-800 font-medium">
+        Register here
+      </a>
+    </p>
+  </div>
+</div>
+{% endblock %}
