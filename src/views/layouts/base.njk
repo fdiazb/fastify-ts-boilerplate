@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | Fastify TS App</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+  <header class="bg-indigo-600 text-white shadow-md">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold">Fastify TS App</a>
+      <div class="space-x-4">
+        <a href="/" class="hover:text-indigo-200">Home</a>
+        <a href="/about" class="hover:text-indigo-200">About</a>
+        {% if isAuthenticated %}
+          <a href="/private" class="hover:text-indigo-200">Dashboard</a>
+          <a href="/private/profile" class="hover:text-indigo-200">Profile</a>
+          <a href="/auth/logout" class="bg-indigo-700 hover:bg-indigo-800 px-3 py-1 rounded">Logout ({{ username }})</a>
+        {% else %}
+          <a href="/auth/login" class="hover:text-indigo-200">Login</a>
+          <a href="/auth/register" class="bg-indigo-700 hover:bg-indigo-800 px-3 py-1 rounded">Register</a>
+        {% endif %}
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4 py-8 flex-grow pb-24">
+    {% if flash and flash.length > 0 %}
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+        <p>{{ flash[0] }}</p>
+      </div>
+    {% endif %}
+    
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 w-full fixed bottom-0 left-0">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; {{ now() | date('Y') }} Fastify TS App. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

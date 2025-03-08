@@ -1,0 +1,54 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="bg-white p-8 rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h1>
+  
+  <div class="mb-8">
+    <div class="flex items-center mb-6">
+      <div class="bg-indigo-100 text-indigo-800 rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold mr-4">
+        {{ username.charAt(0) }}
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-800">{{ username }}</h2>
+        <p class="text-gray-600">Member since {{ user.createdAt | date('MMMM d, yyyy') }}</p>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-200 pt-6">
+      <h3 class="text-xl font-semibold mb-4 text-indigo-600">Account Information</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Username</p>
+          <p class="font-medium">{{ username }}</p>
+        </div>
+        
+        <div>
+          <p class="text-sm text-gray-500 mb-1">User ID</p>
+          <p class="font-medium">{{ user.id }}</p>
+        </div>
+        
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Created At</p>
+          <p class="font-medium">{{ user.createdAt | date('MMMM d, yyyy') }}</p>
+        </div>
+        
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Last Updated</p>
+          <p class="font-medium">{{ user.updatedAt | date('MMMM d, yyyy') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="flex space-x-4">
+    <a href="/private" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded">
+      Back to Dashboard
+    </a>
+    <a href="/auth/logout" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+      Logout
+    </a>
+  </div>
+</div>
+{% endblock %}
